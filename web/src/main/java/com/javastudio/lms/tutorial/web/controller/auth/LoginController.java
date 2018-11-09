@@ -1,4 +1,4 @@
-package com.javastudio.lms.tutorial.security;
+package com.javastudio.lms.tutorial.web.controller.auth;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
