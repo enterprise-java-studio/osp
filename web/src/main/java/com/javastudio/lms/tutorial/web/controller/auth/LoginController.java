@@ -10,6 +10,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 
@@ -19,7 +20,8 @@ public class LoginController implements Serializable {
 
     private static final long serialVersionUID = -6955237149837835795L;
 
-    private Logger logger = LoggerFactory.getLogger(LoginController.class);
+    @Inject
+    Logger logger;
 
     private String username;
 

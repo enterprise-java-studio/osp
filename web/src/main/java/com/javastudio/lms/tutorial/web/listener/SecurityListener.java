@@ -1,19 +1,17 @@
 package com.javastudio.lms.tutorial.web.listener;
 
-import com.javastudio.lms.tutorial.web.security.ShiroAuthorizingRealm;
+import com.javastudio.lms.tutorial.web.security.SecurityRealm;
 import org.apache.shiro.mgt.RealmSecurityManager;
-import org.apache.shiro.realm.Realm;
-import org.apache.shiro.web.env.DefaultWebEnvironment;
 import org.apache.shiro.web.env.EnvironmentLoaderListener;
 import org.apache.shiro.web.env.WebEnvironment;
 
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
 
-public class ShiroEnvironmentLoaderListener extends EnvironmentLoaderListener {
+public class SecurityListener extends EnvironmentLoaderListener {
 
     @Inject
-    ShiroAuthorizingRealm realm;
+    SecurityRealm realm;
 
     @Override
     protected WebEnvironment createEnvironment(ServletContext sc) {

@@ -7,18 +7,22 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ShiroAuthorizingRealm extends AuthorizingRealm {
-    Logger logger = LoggerFactory.getLogger(ShiroAuthorizingRealm.class);
+import javax.inject.Inject;
+
+public class SecurityRealm extends AuthorizingRealm {
+
+    @Inject
+    Logger logger;
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        logger.info("ShiroAuthorizingRealm --> doGetAuthorizationInfo start");
+        logger.info("SecurityRealm --> doGetAuthorizationInfo start");
         return null;
     }
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        logger.info("ShiroAuthorizingRealm --> doGetAuthenticationInfo start");
+        logger.info("SecurityRealm --> doGetAuthenticationInfo start");
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
         SimpleAuthenticationInfo authenticationInfo =
                 new SimpleAuthenticationInfo(token.getUsername(), token.getPassword(), "");
