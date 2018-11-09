@@ -7,17 +7,19 @@ import org.apache.shiro.web.env.DefaultWebEnvironment;
 import org.apache.shiro.web.env.EnvironmentLoaderListener;
 import org.apache.shiro.web.env.WebEnvironment;
 
+import javax.inject.Inject;
 import javax.servlet.ServletContext;
 
 public class ShiroEnvironmentLoaderListener extends EnvironmentLoaderListener {
+
+    @Inject
+    ShiroAuthorizingRealm realm;
 
     @Override
     protected WebEnvironment createEnvironment(ServletContext sc) {
         WebEnvironment environment = super.createEnvironment(sc);
 
         RealmSecurityManager securityManager = (RealmSecurityManager) environment.getSecurityManager();
-
-        Realm realm = new ShiroAuthorizingRealm();
 
         securityManager.setRealm(realm);
 
