@@ -44,7 +44,7 @@
 
     <listener>
         <listener-class>
-            org.apache.shiro.web.env.EnvironmentLoaderListener
+            com.javastudio.lms.tutorial.web.listener.ShiroEnvironmentLoaderListener
         </listener-class>
     </listener>
 
