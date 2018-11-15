@@ -1,33 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
 
-    <h:messages id="messages"/>
+<h:head>
+    <title>Login Application in JSF 2</title>
+</h:head>
 
-    <h:form id="login">
-        <div>
-            <h:outputLabel value="username"/>
-            <h:inputText id="username" label="username" value="#{loginController.username}"/>
-        </div>
+<f:view locale="fa_IR">
+    <h:body>
+        <h:messages id="messages"/>
 
-        <div>
-            <h:outputLabel value="password"/>
-            <h:inputText id="password" label="password" value="#{loginController.password}"/>
-        </div>
+        <h3>Login Application in JSF 2</h3>
+        <h:form id="login">
+            <div>
+                <h:outputLabel value="#{lbl.username}"/>
+                <h:inputText id="username" label="#{lbl.username}" value="#{loginController.username}" required="true"/>
+            </div>
 
-        <div>
-            <h:outputLabel value="rememberMe"/>
-            <h:selectBooleanCheckbox id="rememberMe" label="rememberMe" value="#{loginController.rememberMe}"/>
-        </div>
+            <div>
+                <h:outputLabel value="#{lbl.password}"/>
+                <h:inputSecret id="password" value="#{loginController.password}" label="#{lbl.password}"
+                               required="true"/>
+            </div>
 
-        <div>
-            <h:commandButton value="login" action="#{loginController.login}"/>
-        </div>
-    </h:form>
+            <div>
+                <h:outputLabel value="#{lbl['remember.me']}"/>
+                <h:selectBooleanCheckbox id="rememberMe" label="rememberMe" value="#{loginController.rememberMe}"/>
+            </div>
+
+            <div>
+                <h:commandButton action="#{loginController.login}"
+                                 styleClass="btn btn-default" value="#{msg.signIn}">
+                    <f:ajax render="messages" execute="@form"/>
+                </h:commandButton>
+            </div>
+        </h:form>
+    </h:body>
 </f:view>
 </html>
+
+
+
+
+
+
+
+
+

@@ -15,7 +15,9 @@ import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
+import javax.servlet.annotation.WebListener;
 
+// @WebListener
 public class SecurityListener extends EnvironmentLoaderListener {
 
     @Inject
