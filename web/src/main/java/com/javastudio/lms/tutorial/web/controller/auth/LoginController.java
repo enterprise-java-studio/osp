@@ -60,6 +60,15 @@ public class LoginController implements Serializable {
         }
     }
 
+    public void logout() {
+        Subject currentUser = SecurityUtils.getSubject();
+        if (currentUser.isAuthenticated()) {
+            String principal = currentUser.getPrincipal().toString();
+            currentUser.logout();
+            logger.info("User {} logged out successfully", principal);
+        }
+    }
+
     public void signup() {
         User user = new User();
         user.setUsername(username);
