@@ -5,17 +5,10 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:metadata>
+    <f:viewAction action="#{logoutController.logout}"/>
+</f:metadata>
 <f:view>
     <h:messages id="messages"/>
-
-    <h2>Index</h2>
-    <h:form>
-        <h:commandButton value="#{lbl.logout}" action="#{logoutController.logout}">
-            <f:ajax render="messages" execute="@form"/>
-        </h:commandButton>
-
-        <h:link value="#{lbl.logout}" outcome="logout"/>
-
-    </h:form>
 </f:view>
 </html>
