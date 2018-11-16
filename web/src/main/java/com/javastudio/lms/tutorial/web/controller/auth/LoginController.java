@@ -39,7 +39,7 @@ public class LoginController implements Serializable {
 
     private Boolean rememberMe;
 
-    public void login() {
+    public String login() {
         logger.info(username);
         logger.info(password);
         logger.info(String.valueOf(rememberMe));
@@ -53,14 +53,14 @@ public class LoginController implements Serializable {
             token.setRememberMe(rememberMe);
             currentUser.login(token);
             logger.info("User {} has logged in successfully.", token.getUsername());
+            return "/index?faces-redirect=true";
         } catch (RuntimeException e) {
             logger.error("Unknown user, please try again", e);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
         }
+        return null;
     }
-
-
 
     public void signup() {
         User user = new User();
@@ -70,7 +70,6 @@ public class LoginController implements Serializable {
 
         userService.save(user);
     }
-
 
     public String getUsername() {
         return username;
