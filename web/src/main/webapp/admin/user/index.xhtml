@@ -1,65 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+    <ui:define name="content">
+        <div class="container">
+            <h2>Users</h2>
 
-    <h:form>
+            <h:form>
+                <h:dataTable value="#{userManager.users}" var="user"
+                             styleClass="table table-striped table-bordered dt-responsive nowrap"
+                             headerClass="employeeTableHeader" rowClasses="employeeTableOddRow,employeeTableEvenRow">
 
-        <h:dataTable value="#{userManager.users}" var="user"
-                     styleClass="table table-striped table-bordered dt-responsive nowrap"
-                     headerClass="employeeTableHeader" rowClasses="employeeTableOddRow,employeeTableEvenRow">
+                    <h:column>
+                        <f:facet name="header">#{lbl['label.entity.id']}</f:facet>
+                        #{user.id}
+                    </h:column>
 
-            <h:column>
-                <f:facet name="header">#{lbl['label.entity.id']}</f:facet>
-                #{user.id}
-            </h:column>
+                    <h:column>
+                        <f:facet name="header">#{lbl['label.user.username']}</f:facet>
+                        <h:link value="#{user.username}" outcome="profile">
+                            <f:param name="id" value="#{user.id}"/>
+                        </h:link>
+                    </h:column>
 
-            <h:column>
-                <f:facet name="header">#{lbl['label.user.username']}</f:facet>
-                <h:link value="#{user.username}" outcome="profile">
-                    <f:param name="id" value="#{user.id}"/>
-                </h:link>
-            </h:column>
+                    <h:column>
+                        <f:facet name="header">#{lbl['label.entity.description']}</f:facet>
+                        #{user.description}
+                    </h:column>
 
-            <h:column>
-                <f:facet name="header">#{lbl['label.entity.description']}</f:facet>
-                #{user.description}
-            </h:column>
-
-            <h:column>
-                <f:facet name="header">#{lbl['label.header.options']}</f:facet>
-                <table border="0">
-                    <tr>
-                        <td>
-                            <h:link outcome="insert">
-                                <f:param name="id" value="#{user.id}"/>
-                                <h:graphicImage alt="edit" library="images" name="edit.png" width="20"
-                                                styleClass="img-responsive"/>
-                            </h:link>
-                        </td>
-                        <td>
-                            <h:commandLink action="#{userController.delete(user.id)}">
-                                <h:graphicImage alt="delete" library="images" name="delete.png" width="20"
-                                                styleClass="img-responsive"/>
-                                <!--<f:ajax execute="@form" render="@form" />-->
-                            </h:commandLink>
-                        </td>
-                        <td>
-                            <h:commandLink action="#{userController.refresh}">
-                                <h:graphicImage alt="reload" library="images" name="reload.png" width="20"
-                                                styleClass="img-responsive"/>
-                            </h:commandLink>
-                        </td>
-                    </tr>
-                </table>
-            </h:column>
-        </h:dataTable>
-
-    </h:form>
-
-</f:view>
-</html>
+                    <h:column>
+                        <f:facet name="header">#{lbl['label.header.options']}</f:facet>
+                        <table border="0">
+                            <tr>
+                                <td>
+                                    <h:link outcome="insert">
+                                        <f:param name="id" value="#{user.id}"/>
+                                        <h:graphicImage alt="edit" library="images" name="edit.png" width="20"
+                                                        styleClass="img-responsive"/>
+                                    </h:link>
+                                </td>
+                                <td>
+                                    <h:commandLink action="#{userController.delete(user.id)}">
+                                        <h:graphicImage alt="delete" library="images" name="delete.png" width="20"
+                                                        styleClass="img-responsive"/>
+                                        <!--<f:ajax execute="@form" render="@form" />-->
+                                    </h:commandLink>
+                                </td>
+                                <td>
+                                    <h:commandLink action="#{userController.refresh}">
+                                        <h:graphicImage alt="reload" library="images" name="reload.png" width="20"
+                                                        styleClass="img-responsive"/>
+                                    </h:commandLink>
+                                </td>
+                            </tr>
+                        </table>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
