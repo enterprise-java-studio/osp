@@ -1,5 +1,7 @@
 package com.javastudio.lms.tutorial.model.to;
 
+import com.javastudio.lms.tutorial.model.base.EntityBase;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
@@ -14,15 +16,11 @@ import java.util.Set;
         @NamedQuery(name = User.FIND_ALL, query = "select t from User t"),
         @NamedQuery(name = User.FIND_BY_USERNAME, query = "SELECT u FROM User u WHERE u.username = :username"),
 })
-public class User {
+public class User extends EntityBase {
 
     public static final String FIND_ALL = "User.findAll";
-    public static final String FIND_BY_USERNAME = "User.findByUsername";
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_GENERATOR")
-    @Column(name = "ID", nullable = false, updatable = false)
-    private Long id;
+    public static final String FIND_BY_USERNAME = "User.findByUsername";
 
     @NotNull
     @Column(name = "USERNAME", length = 50, nullable = false)
@@ -41,18 +39,6 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "ROLE_ID", referencedColumnName = "ID", table = "SECURITY_ROLE")},
             uniqueConstraints = {@UniqueConstraint(columnNames = {"USER_ID", "ROLE_ID"})})
     private Set<Role> roles;
-
-    @Version
-    @Column(name = "VERSION", nullable = false)
-    private Timestamp version;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;
@@ -76,14 +62,6 @@ public class User {
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
-    }
-
-    public Timestamp getVersion() {
-        return version;
-    }
-
-    public void setVersion(Timestamp version) {
-        this.version = version;
     }
 
     public Set<Role> getRoles() {
