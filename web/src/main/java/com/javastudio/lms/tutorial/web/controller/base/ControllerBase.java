@@ -1,6 +1,6 @@
 package com.javastudio.lms.tutorial.web.controller.base;
 
-import com.javastudio.lms.tutorial.api.base.GeneralServiceApi;
+import com.javastudio.lms.tutorial.api.GeneralServiceApi;
 import com.javastudio.lms.tutorial.model.base.EntityBase;
 import org.slf4j.Logger;
 

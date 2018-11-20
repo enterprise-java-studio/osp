@@ -1,6 +1,6 @@
 package com.javastudio.lms.tutorial.web.controller.user;
 
-import com.javastudio.lms.tutorial.service.UserService;
+import com.javastudio.lms.tutorial.api.UserService;
 
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
@@ -15,7 +15,4 @@ public class UserController implements Serializable {
 
     @EJB
     UserService service;
-
-
-
 }

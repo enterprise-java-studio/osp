@@ -1,4 +1,4 @@
-package com.javastudio.lms.tutorial.api.base;
+package com.javastudio.lms.tutorial.api;
 
 import com.javastudio.lms.tutorial.model.base.EntityBase;
 

@@ -1,7 +1,7 @@
 package com.javastudio.lms.tutorial.web.security;
 
+import com.javastudio.lms.tutorial.api.UserService;
 import com.javastudio.lms.tutorial.model.to.User;
-import com.javastudio.lms.tutorial.service.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.AuthorizationInfo;

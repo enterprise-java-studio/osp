@@ -6,10 +6,13 @@ import javax.faces.application.FacesMessage;
 import javax.faces.application.ProjectStage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import java.io.Serializable;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public abstract class JsfUtils {
+public class JsfUtils implements Serializable {
+
+    private static final long serialVersionUID = -7543823391573503720L;
 
     public final FacesContext facesContext;
     public final String requestContextPath;

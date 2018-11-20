@@ -1,7 +1,7 @@
 package com.javastudio.lms.tutorial.web.security;
 
+import com.javastudio.lms.tutorial.api.UserService;
 import com.javastudio.lms.tutorial.model.to.User;
-import com.javastudio.lms.tutorial.service.UserService;
 import org.slf4j.Logger;
 
 import javax.annotation.PostConstruct;
@@ -30,7 +30,7 @@ public class InsertUser {
     public void insert() {
         try {
             User user = userService.findByUsername("admin");
-            if (user!= null)
+            if (user != null)
                 return;
 
             User admin = new User();
@@ -45,7 +45,7 @@ public class InsertUser {
             admin.getRoles().add(role);
             */
 
-            this.userService.save(admin);
+            this.userService.create(admin);
             logger.info("User admin added successfully");
         } catch (Exception e) {
             logger.warn("Could not add user admin", e);
