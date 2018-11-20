@@ -1,0 +1,35 @@
+.watermark {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url("#{resource['/images/kisspng-colored-pencil-drawing-creative-color-pencil.png']}");
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.05;
+    width: 100%;
+    height: 100%;
+}
+
+.navbar-watermark {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url("#{resource['/images/xDigitalLibraryResource.jpg.pagespeed.ic.BGfqsqjwqN.jpg']}");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.1;
+    width: 100%;
+    height: 100%;
+}
+
+.footer{
+    font-size: 10px;
+}

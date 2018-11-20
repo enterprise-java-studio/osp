@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+<ui:insert name="metadata"/>
+
+<h:head>
+    <f:facet name="first">
+        <h:outputScript library="jquery" name="/dist/jquery.min.js" target="head"/>
+
+        <h:outputScript library="jquery-ui-dist" name="jquery-ui.min.js" target="head"/>
+        <h:outputStylesheet library="jquery-ui-dist" name="jquery-ui.min.css"/>
+
+        <h:outputStylesheet library="bootstrap" name="/dist/css/bootstrap.min.css"/>
+
+        <h:outputScript library="popper.js" name="/dist/umd/popper.min.js" target="head"/>
+        <h:outputScript library="bootstrap" name="/dist/js/bootstrap.min.js" target="head"/>
+
+        <h:outputScript library="numeral" name="numeral.js" target="head"/>
+
+        <h:outputScript library="en_US" name="/menumaker/script.js" target="head"/>
+        <h:outputStylesheet library="en_US" name="/menumaker/styles.css"/>
+
+        <h:outputStylesheet library="en_US" name="styles.css"/>
+    </f:facet>
+
+    <title>
+        <ui:insert name="title">Digital Library</ui:insert>
+    </title>
+
+    <ui:insert name="head"/>
+</h:head>
+
+<f:view encoding="UTF-8" contentType="text/html; charset=UTF-8" locale="en_US">
+    <h:body>
+        <div style="position: fixed;left: 0px;top: 0px;width: 100%;height: 100%;z-index: 9999;background: url('#{resource['images:pre-loader.gif']}') center no-repeat #fff; display: none;opacity: 0.7;"
+             id="ajaxloader">
+        </div>
+
+        <nav class="navbar navbar-expand-xl navbar-expand-lg navbar-light"
+             role="navigation">
+            <a class="navbar-brand" href="#">
+                <h:graphicImage library="images" name="kisspng-pencil-the-drawing-art-gold-pen.png"
+                                width="40" height="40" alt="Ketabkade"/>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="username" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            UserName
+                            <b class="caret"></b>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="username" id="user-panel">
+                            <a class="dropdown-item" href="#">#{lbl.logout}</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                </ul>
+                <h:form class="form-inline my-2 my-lg-0">
+                    <h:inputText class="form-control mr-sm-2"
+                                 p:type="search" p:placeholder="Search" aria-label="Search">
+                    </h:inputText>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </h:form>
+            </div>
+        </nav>
+
+        <ui:include src="_menu.xhtml"/>
+
+        <div id='cssmenu' style="z-index: 900">
+            <ul>
+                <!--active class-->
+                <li>
+                    <a href='#{request.contextPath}/index.xhtml'>#{lbl['menu.home']}</a>
+                </li>
+                <li class='has-sub'><a href='#'>#{lbl['menu.fundamental']}</a>
+                    <ul>
+                        <li>
+                            <a href='#{request.contextPath}/admin/agerange/index.xhtml'>#{lbl['agerange.index.title']}</a>
+                        </li>
+                        <li>
+                            <a href='#{request.contextPath}/admin/insuredworkplace/index.xhtml'>#{lbl['menu.insuredworkplace']}</a>
+                        </li>
+                        <li>
+                            <a href='#{request.contextPath}/admin/plantype/index.xhtml'>#{lbl['menu.plantype']}</a>
+                        </li>
+                        <li>
+                            <a href='#{request.contextPath}/admin/medicalcenter/index.xhtml'>#{lbl['menu.medicalcenter']}</a>
+                        </li>
+                        <li>
+                            <a href='#{request.contextPath}/admin/insuranceliability/index.xhtml'>#{lbl['menu.insuranceLiability.list']}</a>
+                        </li>
+                        <!--<li class='has-sub'><a href='#'>Product 2</a>-->
+                        <!--<ul>-->
+                        <!--<li><a href='#'>Sub Product</a></li>-->
+                        <!--<li><a href='#'>Sub Product</a></li>-->
+                        <!--</ul>-->
+                        <!--</li>-->
+                    </ul>
+                </li>
+                <li class='has-sub'><a href='#'>#{lbl['menu.operations']}</a>
+                    <ul>
+                        <li>
+                            <a href='#{request.contextPath}/admin/insured/index.xhtml'>#{lbl['menu.insured.list']}</a>
+                        </li>
+                        <li>
+                            <a href='#{request.contextPath}/admin/insuranceplan/index.xhtml'>#{lbl['menu.insurancePlan.list']}</a>
+                        </li>
+                        <li>
+                            <a href='#{request.contextPath}/admin/insuredinsuranceplan/index.xhtml'>#{lbl['menu.insuredInsurancePlan.list']}</a>
+                        </li>
+                        <li>
+                            <a href='#{request.contextPath}/admin/receipt/index.xhtml'>#{lbl['menu.receipt.list']}</a>
+                        </li>
+                        <li>
+                            <a href='#{request.contextPath}/admin/payment/index.xhtml'>#{lbl['menu.payment.list']}</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class='has-sub'><a href='#'>#{lbl['menu.reports']}</a>
+                    <ul>
+                        <li class='has-sub'><a href='#'>#{lbl['menu.report.insured']}</a>
+                            <ul>
+                                <li>
+                                    <a href='#{request.contextPath}/admin/report/insured/insuredCancelDateReport.xhtml'>#{lbl['menu.report.insured.list']}</a>
+                                </li>
+                                <li>
+                                    <a href='#{request.contextPath}/admin/report/insured/summary.xhtml'>#{lbl['menu.report.insured.list']}</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class='has-sub'><a href='#'>#{lbl['menu.report.receipt']}</a>
+                            <ul>
+                                <li>
+                                    <a href='#{request.contextPath}/admin/report/receipt/receiptSummaryReport.xhtml'>#{lbl['menu.receiptsummaryreport.report']}</a>
+                                </li>
+                                <li>
+                                    <a href='#{request.contextPath}/admin/report/receipt/receiptSummaryReportByLiability.xhtml'>#{lbl['menu.receiptsummaryreportbyliability.report']}</a>
+                                </li>
+                                <li>
+                                    <a href='#{request.contextPath}/admin/report/receiptcategory/receiptCategoryReport.xhtml'>#{lbl['menu.receiptcategory.report']}</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class='has-sub'><a href='#'>#{lbl['menu.report.payment']}</a>
+                            <ul>
+                                <li>
+                                    <a href="#{request.contextPath}/admin/report/payment/paymentReceiptsSummary.xhtml">#{lbl['menu.report.payment.receipts.summary']}</a>
+                                </li>
+                                <li>
+                                    <a href="#{request.contextPath}/admin/report/payment/receiptPayableAmount.xhtml">#{lbl['menu.report.payment.receipt.paid.amount']}</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <c:if test="#{templateController.administrator}">
+                    <li class='has-sub'><a href='#'>#{lbl['user.management']}</a>
+                        <ul>
+                            <li>
+                                <a href='#{request.contextPath}/user/signUp.xhtml'>#{lbl['user.singUp']}</a>
+                            </li>
+                        </ul>
+                    </li>
+                </c:if>
+            </ul>
+        </div>
+
+        <div>
+            <div class="watermark"/>
+            <div class="container">
+                <h:messages id="messages" styleClass="alert"
+                            infoClass="alert-info" warnClass="alert-warning"
+                            fatalClass="alert-danger" errorClass="alert-danger"/>
+                <div>
+                    <ui:insert name="header">
+                        <!--<ui:include src="/base/header.xhtml"/>-->
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">Library</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Data</li>
+                            </ol>
+                        </nav>
+                    </ui:insert>
+                </div>
+
+                <div>
+                    <ui:insert name="content"/>
+                </div>
+            </div>
+
+            <div>
+                <ui:insert name="footer">
+                    <!--<ui:include src="/base/footer.xhtml"/>-->
+                    <div style="padding: 20px 10px 10px 10px; text-align: center">
+                        <p class="text-primary footer">
+                            #{msg.copyright}
+                        </p>
+                    </div>
+                </ui:insert>
+            </div>
+        </div>
+    </h:body>
+</f:view>
+</html>
