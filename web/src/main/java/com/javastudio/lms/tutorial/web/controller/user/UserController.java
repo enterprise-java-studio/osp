@@ -37,4 +37,12 @@ public class UserController extends ControllerBase<User> implements Serializable
     protected void afterLoad() {
 
     }
+
+    public User getUser() {
+        return super.entity;
+    }
+
+    public void setUser(User user) {
+        super.entity = user;
+    }
 }
