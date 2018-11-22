@@ -7,22 +7,25 @@ import org.slf4j.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.Dependent;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 @Dependent
-public abstract class ManagerBase<T extends EntityBase> {
+public abstract class ManagerBase<T extends EntityBase> implements Internationalization {
 
     @Inject
     Logger logger;
 
-    @Inject
-    JsfUtils ctx;
+    private final LocalizedResource resource;
 
     protected List<T> entityList;
 
-    public ManagerBase(Class<T> entityBeanClass) {
+    public ManagerBase(Class<T> entityBeanType) {
+        resource = new LocalizedResource(this);
     }
 
     @PostConstruct
@@ -32,6 +35,9 @@ public abstract class ManagerBase<T extends EntityBase> {
     }
 
     public void showNewEntityView() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+
         /*
         Map<String, Object> options = new HashMap<String, Object>();
         options.put("resizable", false);
@@ -39,11 +45,12 @@ public abstract class ManagerBase<T extends EntityBase> {
         */
 
         try {
-            String url = ctx.requestContextPath + ctx.facesContext.getViewRoot().getViewId().replace("index", "insert") + "?faces-redirect=true";
-            ctx.externalContext.redirect(url);
+            String url = externalContext.getRequestContextPath()
+                    + context.getViewRoot().getViewId().replace("index", "insert") + "?faces-redirect=true";
+            externalContext.redirect(url);
         } catch (IOException e) {
             e.printStackTrace();
-            ctx.printErrorMessage(e);
+            resource.printErrorMessage(e);
         }
 
         // String url = FacesContext.getCurrentInstance().getViewRoot().getViewId().replace("insert", "index") + "?faces-redirect=true";
@@ -51,6 +58,12 @@ public abstract class ManagerBase<T extends EntityBase> {
     }
 
     protected abstract void onLoad();
+
+    @Override
+    public Locale getLocale() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        return context.getViewRoot().getLocale();
+    }
 
     public abstract GeneralServiceApi<T> getGeneralServiceApi();
 
@@ -61,4 +74,6 @@ public abstract class ManagerBase<T extends EntityBase> {
     public void setEntityList(List<T> entityList) {
         this.entityList = entityList;
     }
+
+
 }

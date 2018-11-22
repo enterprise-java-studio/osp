@@ -1,11 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
-</html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:viewParam name="id" value="#{userController.id}"/>
+            <f:viewAction action="#{userController.onLoad}"/>
+        </f:metadata>
+    </ui:define>
+
+    <ui:define name="header">
+        <h2>#{lbl['label.user.profile']}</h2>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form class="form-group">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <h:outputLabel for="username"
+                                       value="#{lbl['label.user.username']}"/>
+                    </div>
+                    <h:outputText value="#{userController.user.username}"
+                                  id="username" label="#{lbl['label.user.username']}"
+                                  styleClass="form-control" required="true">
+                    </h:outputText>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <h:outputLabel for="description"
+                                       value="#{lbl['label.entity.description']}"/>
+                    </div>
+                    <h:outputText value="#{userController.user.description}"
+                                  id="description" label="#{lbl['label.entity.description']}"
+                                  styleClass="form-control" required="true">
+                    </h:outputText>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>

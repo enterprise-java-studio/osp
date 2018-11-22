@@ -11,25 +11,27 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.io.IOException;
+import java.util.Locale;
 
 @Dependent
-public abstract class ControllerBase<T extends EntityBase>  {
+public abstract class ControllerBase<T extends EntityBase> implements Internationalization {
 
     @Inject
     Logger logger;
 
-    @Inject
-    JsfUtils ctx;
+    private final LocalizedResource resource;
 
     protected T entity;
 
     private Long id;
 
     public ControllerBase(Class<T> entityBeanType) {
+        resource = new LocalizedResource(this);
+
         try {
             entity = entityBeanType.newInstance();
-        } catch (InstantiationException | IllegalAccessException e) {
-            e.printStackTrace();
+        } catch (IllegalAccessException | InstantiationException e) {
+            logger.error("Could not create instance for " + entityBeanType.getName(), e);
         }
     }
 
@@ -72,15 +74,15 @@ public abstract class ControllerBase<T extends EntityBase>  {
             validate();
 
             getGeneralServiceApi().create(entity);
-            ctx.facesContext.addMessage(null, new FacesMessage(ctx.messagesBundle.getString("request.success")));
-            ctx.externalContext.getFlash().setKeepMessages(true);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(resource.getMessage("request.success")));
+            FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
             return afterCreate();
 
             // TODO: After saving entity we need to create new entity if we stay in insert view
             // entity = factory.createInstance();
         } catch (Exception e) {
             e.printStackTrace();
-            ctx.printErrorMessage(e);
+            resource.printErrorMessage(e);
         }
 
         return null;
@@ -88,7 +90,7 @@ public abstract class ControllerBase<T extends EntityBase>  {
 
 
     protected String afterCreate() {
-        return ctx.facesContext.getViewRoot().getViewId().replace("insert", "index") + "?faces-redirect=true";
+        return FacesContext.getCurrentInstance().getViewRoot().getViewId().replace("insert", "index") + "?faces-redirect=true";
     }
 
     public String update() {
@@ -98,15 +100,18 @@ public abstract class ControllerBase<T extends EntityBase>  {
             url = FacesContext.getCurrentInstance().getViewRoot().getViewId().replace("insert", "index") + "?faces-redirect=true";
         } catch (Exception e) {
             e.printStackTrace();
-            ctx.printErrorMessage(e);
+            resource.printErrorMessage(e);
         }
         return url;
     }
 
     public String cancel() {
-        ctx.facesContext.addMessage(null, new FacesMessage(ctx.messagesBundle.getString("request.cancel")));
-        ctx.externalContext.getFlash().setKeepMessages(true);
-        String url = ctx.facesContext.getViewRoot().getViewId().replace("insert", "index") + "?faces-redirect=true";
+        FacesContext context = FacesContext.getCurrentInstance();
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+
+        context.addMessage(null, new FacesMessage(resource.getMessage("request.cancel")));
+        externalContext.getFlash().setKeepMessages(true);
+        String url = context.getViewRoot().getViewId().replace("insert", "index") + "?faces-redirect=true";
         return url;
     }
 
@@ -118,8 +123,8 @@ public abstract class ControllerBase<T extends EntityBase>  {
             FacesContext context = FacesContext.getCurrentInstance();
             ExternalContext externalContext = context.getExternalContext();
 
-            FacesMessage message = new FacesMessage(ctx.getResourceBundle("msg").getString("request.success"));
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO, ctx.messagesBundle.getString("request.success"), "");
+            FacesMessage message = new FacesMessage(resource.getResourceBundle("msg").getString("request.success"));
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, resource.getMessage("request.success"), "");
             context.addMessage(null, message);
             // externalContext.getFlash().put("message", new FacesMessage(FacesMessage.SEVERITY_INFO, getMessage("request.success"), ""));
             externalContext.getFlash().setKeepMessages(true);
@@ -127,7 +132,7 @@ public abstract class ControllerBase<T extends EntityBase>  {
             // url = context.getViewRoot().getViewId() + "?faces-redirect=true";
         } catch (Exception e) {
             e.printStackTrace();
-            ctx.printErrorMessage(e);
+            resource.printErrorMessage(e);
         }
         return url;
     }
@@ -138,7 +143,7 @@ public abstract class ControllerBase<T extends EntityBase>  {
             entity = getGeneralServiceApi().find(id);
         } catch (Exception e) {
             e.printStackTrace();
-            ctx.printErrorMessage(e);
+            resource.printErrorMessage(e);
         }
         return delete();
     }
@@ -165,4 +170,10 @@ public abstract class ControllerBase<T extends EntityBase>  {
     }
 
     protected abstract void afterLoad();
+
+    @Override
+    public Locale getLocale() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        return context.getViewRoot().getLocale();
+    }
 }
