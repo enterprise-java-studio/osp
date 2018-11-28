@@ -17,7 +17,7 @@
         <message-bundle>com.javastudio.lms.tutorial.web.i18n.validations</message-bundle>
 
         <locale-config>
-            <!--<default-locale>fa_IR</default-locale>-->
+            <default-locale>en_US</default-locale>
             <supported-locale>fa_IR</supported-locale>
             <supported-locale>en_US</supported-locale>
         </locale-config>

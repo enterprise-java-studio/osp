@@ -139,4 +139,7 @@ public class LoginController implements Serializable {
         this.rememberMe = rememberMe;
     }
 
+    public Subject getCurrentUser() {
+        return SecurityUtils.getSubject();
+    }
 }
