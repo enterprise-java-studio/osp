@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Digital Library</title>
+
+    <script type="text/javascript" src="../WEB-INF/resources/jquery/dist/jquery.js"></script>
+
+    <script type="text/javascript" src="../WEB-INF/resources/jquery-ui-dist/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../WEB-INF/resources/jquery-ui-dist/jquery-ui.css"/>
+
+    <link rel="stylesheet" href="../WEB-INF/resources/bootstrap/dist/css/bootstrap.css"/>
+    <script type="text/javascript" src="../WEB-INF/resources/popper.js/dist/umd/popper.js"></script>
+    <script type="text/javascript" src="../WEB-INF/resources/bootstrap/dist/js/bootstrap.js"></script>
+
+    <style type="text/css">
+        #main1 {
+            background: red;
+            background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+            background: linear-gradient(to right, rgba(255, 0, 0, 0), rgba(255, 0, 0, 1));
+        }
+
+        body::after {
+            content: "";
+            background: url(https://www.google.co.in/images/srpr/logo11w.png) no-repeat;
+            opacity: 0.2;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            position: absolute;
+            z-index: 1;
+            height: 100%;
+            width: 100%;
+        }
+
+        .watermark {
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-image: url("../WEB-INF/resources/images/kisspng-colored-pencil-drawing-creative-color-pencil.png");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 0.2;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="main">
+
+    <div class="card card-body">
+        <a href="https://mdbootstrap.com/bootstrap-tutorial/">Bootstrap 4 tutorial – best &amp; free guide of responsive
+            web design</a>
+    </div>
+    <div class="card card-body">
+        <a href="https://mdbootstrap.com/components/">Material Design for Bootstrap 4</a>
+    </div>
+    <div class="container">
+        <h2>Contextual Badges</h2>
+        <span class="badge badge-primary">Primary</span>
+        <span class="badge badge-secondary">Secondary</span>
+        <span class="badge badge-success">Success</span>
+        <span class="badge badge-danger">Danger</span>
+        <span class="badge badge-warning">Warning</span>
+        <span class="badge badge-info">Info</span>
+        <span class="badge badge-light">Light</span>
+        <span class="badge badge-dark">Dark</span>
+    </div>
+
+    <div class="container">
+        <h2>Badge inside a Button</h2>
+        <button type="button" class="btn btn-primary">
+            Messages <span class="badge badge-light">4</span>
+        </button>
+        <button type="button" class="btn btn-danger">
+            Notifications <span class="badge badge-light">7</span>
+        </button>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4">
+        </div>
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4"
+             style="border:solid;border-color: #0cb56f;border-width: thin">
+            <div class="watermark"/>
+            <p>ddddddddddddddd</p>
+            <p>ddddddddddd</p>
+            <p>ddddddddddd</p>
+            <p>ddddddddddd</p>
+            <p>ddddddddddd</p>
+            <p>ddddddddddd</p>
+            <p>ddddddddddd</p>
+            <p>ddddddddddd</p>
+            <p>ddddddddddd</p>
+            <p>ddddddddddd</p>
+            <p>ddddddddddd</p>
+            <p>ddddddddddd</p>
+            <p>ddddddddddd</p>
+            <p>ddddddddddd</p>
+        </div>
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="card mb-3" style="max-width: 18rem;">
+                <div class="card-header bg-primary text-white">Login</div>
+                <div class="card-body">
+                    <p class="card-text">
+                        Join our affiliate partner and get 30% profit on each sale of MDB
+                    </p>
+                    <a class="btn btn-primary btn-md waves-effect waves-light"
+                       href="https://mdbootstrap.com/mdb-affiliate-program/" target="_blank">Sign up</a>
+                    <a class="btn btn-info btn-md waves-effect waves-light"
+                       href="https://mdbootstrap.com/mdb-affiliate-tutorial/" target="_blank">Read tutorial</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

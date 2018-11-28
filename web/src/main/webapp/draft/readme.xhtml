@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Digital Library</title>
+
+    <script type="text/javascript" src="../WEB-INF/resources/jquery/dist/jquery.js"/>
+
+    <script type="text/javascript" src="../WEB-INF/resources/jquery-ui-dist/jquery-ui.js"/>
+    <link rel="stylesheet" href="../WEB-INF/resources/jquery-ui-dist/jquery-ui.css"/>
+
+    <link rel="stylesheet" href="../WEB-INF/resources/bootstrap/dist/css/bootstrap.css"/>
+    <script type="text/javascript" src="../WEB-INF/resources/popper.js/dist/umd/popper.js"/>
+    <script type="text/javascript" src="../WEB-INF/resources/bootstrap/dist/js/bootstrap.js"/>
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Web Configuration</h1>
+        <p>Configuring web ui resources and create templates and menu</p>
+    </div>
+
+    <div class="card card-body">
+        <div class="pb-2 mt-4 mb-2 border-bottom">
+            <h2>Installation</h2>
+        </div>
+
+        <h3 class="card-title">jQuery</h3>
+
+        <p class="card-text">jQuery is registered as a package on npm. You can install the latest version of jQuery with the npm CLI command:</p>
+
+        <div class="card bg-light text-dark">
+            <div class="card-body">
+                npm install jquery
+            </div>
+        </div>
+        <br/>
+
+        <h3 class="card-title">jQuery UI</h3>
+
+        <p class="card-text">jQuery-ui specifically needs to be build after installation. To avoid this, use npm install jquery-ui-dist</p>
+
+        <div class="card bg-light text-dark">
+            <div class="card-body">
+                npm install jquery-ui-dist
+            </div>
+        </div>
+        <br/>
+
+        <p class="card-text">You can alternatively download older version</p>
+
+        <div class="card bg-light text-dark">
+            <div class="card-body">
+                npm install github:jquery/jquery-ui#1.11.4
+            </div>
+        </div>
+        <br/>
+
+        <p class="card-text">You can download the latest version of jQuery UI from
+            <a href="http://jqueryui.com/download/">http://jqueryui.com/download/</a>
+        </p>
+
+        <h3 class="card-title">Bootstrap</h3>
+
+        <p class="card-text">Install Bootstrap in your Node.js powered apps with the npm package:</p>
+
+        <div class="card bg-light text-dark">
+            <div class="card-body">
+                npm install bootstrap
+            </div>
+        </div>
+        <br/>
+
+        <div class="card-text">
+            <p>Installing bootstrap will also install jQuery and popper</p>
+        </div>
+        <br/>
+
+        <h3 class="card-title">Numeral.js</h3>
+        <div class="card bg-light text-dark">
+            <div class="card-body">
+                npm install numeral
+            </div>
+        </div>
+        <br/>
+
+        <h3 class="card-title">Validator</h3>
+        <div class="card-text">
+            <p>A simple and user-friendly form validator plugin for Bootstrap 3</p>
+        </div>
+        <div class="card bg-light text-dark">
+            <div class="card-body">
+                npm install bootstrap-validator
+            </div>
+        </div>
+        <br/>
+    </div>
+
+    <br/>
+
+    <div class="card card-body">
+        <div class="pb-2 mt-4 mb-2 border-bottom">
+            <h1>Menu</h1>
+            <p>http://cssmenumaker.com/</p>
+        </div>
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+
+    <div class="ui-widget">
+        <p>This page demonstrates the widgets and theme you selected in Download Builder. Please make sure you are using them with a compatible jQuery version.</p>
+    </div>
+
+    <h2 class="demoHeaders">Accordion</h2>
+    <div id="accordion">
+        <h3>First</h3>
+        <div>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</div>
+        <h3>Second</h3>
+        <div>Phasellus mattis tincidunt nibh.</div>
+        <h3>Third</h3>
+        <div>Nam dui erat, auctor a, dignissim quis.</div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#accordion").accordion();
+</script>
+
+</body>
+</html>
