@@ -32,30 +32,20 @@
 
                     <h:column>
                         <f:facet name="header">#{lbl['label.header.options']}</f:facet>
-                        <table border="0">
-                            <tr>
-                                <td>
-                                    <h:link outcome="insert">
-                                        <f:param name="id" value="#{user.id}"/>
-                                        <h:graphicImage alt="edit" library="images" name="edit.png" width="20"
-                                                        styleClass="img-responsive"/>
-                                    </h:link>
-                                </td>
-                                <td>
-                                    <h:commandLink action="#{userController.delete(user.id)}">
-                                        <h:graphicImage alt="delete" library="images" name="delete.png" width="20"
-                                                        styleClass="img-responsive"/>
-                                        <!--<f:ajax execute="@form" render="@form" />-->
-                                    </h:commandLink>
-                                </td>
-                                <td>
-                                    <h:commandLink action="#{userController.refresh}">
-                                        <h:graphicImage alt="reload" library="images" name="reload.png" width="20"
-                                                        styleClass="img-responsive"/>
-                                    </h:commandLink>
-                                </td>
-                            </tr>
-                        </table>
+                        <h:link outcome="insert">
+                            <f:param name="id" value="#{user.id}"/>
+                            <h:graphicImage alt="edit" library="images" name="edit.png" width="20"
+                                            styleClass="img-responsive"/>
+                        </h:link>
+                        <h:commandLink action="#{userController.delete(user.id)}">
+                            <h:graphicImage alt="delete" library="images" name="delete.png" width="20"
+                                            styleClass="img-responsive"/>
+                            <!--<f:ajax execute="@form" render="@form" />-->
+                        </h:commandLink>
+                        <h:commandLink action="#{userController.refresh}">
+                            <h:graphicImage alt="reload" library="images" name="reload.png" width="20"
+                                            styleClass="img-responsive"/>
+                        </h:commandLink>
                     </h:column>
                 </h:dataTable>
             </h:form>

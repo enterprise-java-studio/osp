@@ -23,7 +23,18 @@
                 </div>
                 <h:inputText value="#{userController.user.username}"
                              id="username" label="#{lbl['label.user.username']}"
-                             p:placeholder="Name1" styleClass="form-control"/>
+                             styleClass="form-control" p:placeholder="#{lbl['label.user.username']}"/>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <h:outputText value="#{lbl['label.user.password']}" id="basic-addon3"
+                                  styleClass="input-group-text" for="password"/>
+                </div>
+                <h:inputText value="#{userController.password}" id="password"
+                             label="#{lbl['label.user.password']}" styleClass="form-control"
+                             p:placeholder="#{lbl['label.user.password']}"
+                             p:aria-describedby="basic-addon3"/>
             </div>
 
             <div class="input-group mb-3">
@@ -33,7 +44,7 @@
                 </div>
                 <h:inputText value="#{userController.user.description}"
                              id="description" label="#{lbl['label.entity.description']}"
-                             p:placeholder="Description1" styleClass="form-control"/>
+                             p:placeholder="#{lbl['label.entity.description']}" styleClass="form-control"/>
             </div>
 
             <h:commandButton value="Save" action="#{userController.create}" styleClass="btn btn-outline-primary"

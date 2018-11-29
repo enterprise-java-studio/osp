@@ -4,6 +4,7 @@ import com.javastudio.lms.tutorial.api.GeneralServiceApi;
 import com.javastudio.lms.tutorial.api.UserService;
 import com.javastudio.lms.tutorial.model.to.User;
 import com.javastudio.lms.tutorial.web.controller.base.ControllerBase;
+import com.javastudio.lms.tutorial.web.security.BCryptPasswordService;
 import org.slf4j.Logger;
 
 import javax.ejb.EJB;
@@ -21,8 +22,13 @@ public class UserController extends ControllerBase<User> implements Serializable
     @Inject
     Logger logger;
 
+    @Inject
+    BCryptPasswordService passwordService;
+
     @EJB
     UserService service;
+
+    private String password;
 
     public UserController() {
         super(User.class);
@@ -31,6 +37,14 @@ public class UserController extends ControllerBase<User> implements Serializable
     @Override
     public GeneralServiceApi<User> getGeneralServiceApi() {
         return service;
+    }
+
+    @Override
+    public void prepare() {
+        super.prepare();
+
+        getUser().setPassword(passwordService.encryptPassword(password));
+        getUser().setEnabled(Boolean.TRUE);
     }
 
     @Override
@@ -44,5 +58,13 @@ public class UserController extends ControllerBase<User> implements Serializable
 
     public void setUser(User user) {
         super.entity = user;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

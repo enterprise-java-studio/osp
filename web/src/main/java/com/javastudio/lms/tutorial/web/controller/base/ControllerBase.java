@@ -5,6 +5,8 @@ import com.javastudio.lms.tutorial.model.base.EntityBase;
 import org.slf4j.Logger;
 
 import javax.annotation.PostConstruct;
+import javax.decorator.Decorator;
+import javax.decorator.Delegate;
 import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
@@ -25,8 +27,12 @@ public abstract class ControllerBase<T extends EntityBase> implements Internatio
 
     private Long id;
 
-    public ControllerBase(Class<T> entityBeanType) {
+    public ControllerBase() {
         resource = new LocalizedResource(this);
+    }
+
+    public ControllerBase(Class<T> entityBeanType) {
+        this();
 
         try {
             entity = entityBeanType.newInstance();
@@ -61,27 +67,18 @@ public abstract class ControllerBase<T extends EntityBase> implements Internatio
         entity.setId(null);
     }
 
-    public boolean validate() {
-        return false;
-    }
-
     public String create() {
         try {
             // prepare entity
             prepare();
 
-            // validate entity
-            validate();
-
             getGeneralServiceApi().create(entity);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(resource.getMessage("request.success")));
             FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
             return afterCreate();
-
-            // TODO: After saving entity we need to create new entity if we stay in insert view
-            // entity = factory.createInstance();
         } catch (Exception e) {
-            e.printStackTrace();
+            String message = String.format("Could not save %s in database.", entity.getClass());
+            logger.error(message, e);
             resource.printErrorMessage(e);
         }
 
@@ -141,8 +138,11 @@ public abstract class ControllerBase<T extends EntityBase> implements Internatio
     public String delete(Long id) {
         try {
             entity = getGeneralServiceApi().find(id);
+            String message = String.format("Entity %s with id %d is found", entity.getClass(), entity.getId());
+            logger.info(message);
         } catch (Exception e) {
-            e.printStackTrace();
+            String message = String.format("Could not find entity %s with id %d", entity.getClass(), id);
+            logger.error(message, e);
             resource.printErrorMessage(e);
         }
         return delete();

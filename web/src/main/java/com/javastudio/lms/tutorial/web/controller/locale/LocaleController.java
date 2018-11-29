@@ -2,7 +2,9 @@ package com.javastudio.lms.tutorial.web.controller.locale;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.enterprise.event.Observes;
 import javax.faces.context.FacesContext;
+import javax.faces.event.PhaseEvent;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.Locale;
@@ -40,4 +42,9 @@ public class LocaleController implements Serializable {
         locale = new Locale(language, country);
         FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);
     }
+
+    // https://stackoverflow.com/questions/4830588/localization-in-jsf-how-to-remember-selected-locale-per-session-instead-of-per
+    //    public void resetLocale(@Observes @BeforePhase(JsfPhaseId.RENDER_RESPONSE) PhaseEvent event) {
+    //        event.getFacesContext().getViewRoot().setLocale(this.locale);
+    //    }
 }
