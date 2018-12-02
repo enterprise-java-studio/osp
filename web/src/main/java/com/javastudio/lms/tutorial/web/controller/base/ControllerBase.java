@@ -68,13 +68,17 @@ public abstract class ControllerBase<T extends EntityBase> implements Internatio
     }
 
     public String create() {
+
+        FacesContext context = FacesContext.getCurrentInstance();
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+
         try {
             // prepare entity
             prepare();
 
             getGeneralServiceApi().create(entity);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(resource.getMessage("request.success")));
-            FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+            context.addMessage(null, new FacesMessage(resource.getMessage("request.success")));
+            externalContext.getFlash().setKeepMessages(true);
             return afterCreate();
         } catch (Exception e) {
             String message = String.format("Could not save %s in database.", entity.getClass());
@@ -114,26 +118,27 @@ public abstract class ControllerBase<T extends EntityBase> implements Internatio
 
     public String delete() {
         String url = null;
+        FacesContext context = FacesContext.getCurrentInstance();
+        ExternalContext externalContext = context.getExternalContext();
 
         try {
             getGeneralServiceApi().delete(entity);
-            FacesContext context = FacesContext.getCurrentInstance();
-            ExternalContext externalContext = context.getExternalContext();
 
-            FacesMessage message = new FacesMessage(resource.getResourceBundle("msg").getString("request.success"));
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO, resource.getMessage("request.success"), "");
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, resource.getMessage("request.success"), "");
             context.addMessage(null, message);
-            // externalContext.getFlash().put("message", new FacesMessage(FacesMessage.SEVERITY_INFO, getMessage("request.success"), ""));
-            externalContext.getFlash().setKeepMessages(true);
 
-            // url = context.getViewRoot().getViewId() + "?faces-redirect=true";
+            // externalContext.getFlash().put("message", new FacesMessage(FacesMessage.SEVERITY_INFO, getMessage("request.success"), ""));
+
+            externalContext.getFlash().setKeepMessages(true);
+            url = context.getViewRoot().getViewId() + "?faces-redirect=true";
         } catch (Exception e) {
-            e.printStackTrace();
+            String message = String.format("Could not remove entity %s with id %d", entity.getClass().getName(), entity.getId());
+            logger.error(message, e);
             resource.printErrorMessage(e);
         }
+
         return url;
     }
-
 
     public String delete(Long id) {
         try {

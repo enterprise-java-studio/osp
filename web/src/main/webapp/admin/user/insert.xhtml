@@ -47,11 +47,11 @@
                              p:placeholder="#{lbl['label.entity.description']}" styleClass="form-control"/>
             </div>
 
-            <h:commandButton value="Save" action="#{userController.create}" styleClass="btn btn-outline-primary"
+            <h:commandButton value="#{lbl['button.save']}" action="#{userController.create}" styleClass="btn btn-outline-primary"
                              rendered="#{empty userController.user.id}"/>
-            <h:commandButton value="Update" action="#{userController.update}" styleClass="btn btn-outline-primary"
+            <h:commandButton value="#{lbl['button.update']}" action="#{userController.update}" styleClass="btn btn-outline-primary"
                              rendered="#{not empty userController.user.id}"/>
-            <h:commandButton value="Cancel" action="#{userController.cancel}" styleClass="btn btn-outline-primary"/>
+            <h:commandButton value="#{lbl['button.cancel']}" action="#{userController.cancel}" styleClass="btn btn-outline-primary"/>
 
         </h:form>
     </ui:define>
