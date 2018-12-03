@@ -2,6 +2,8 @@ package com.javastudio.lms.tutorial.web.controller.base;
 
 import com.javastudio.lms.tutorial.api.GeneralServiceApi;
 import com.javastudio.lms.tutorial.model.base.EntityBase;
+import com.javastudio.lms.tutorial.web.annotation.ShiroSecured;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 
 import javax.annotation.PostConstruct;
@@ -15,6 +17,7 @@ import javax.inject.Inject;
 import java.io.IOException;
 import java.util.Locale;
 
+@ShiroSecured
 @Dependent
 public abstract class ControllerBase<T extends EntityBase> implements Internationalization {
 
@@ -140,6 +143,7 @@ public abstract class ControllerBase<T extends EntityBase> implements Internatio
         return url;
     }
 
+    @RequiresPermissions("entity:delete")
     public String delete(Long id) {
         try {
             entity = getGeneralServiceApi().find(id);

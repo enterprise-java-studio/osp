@@ -3,6 +3,7 @@ package com.javastudio.lms.tutorial.web.controller.user;
 import com.javastudio.lms.tutorial.api.GeneralServiceApi;
 import com.javastudio.lms.tutorial.api.UserService;
 import com.javastudio.lms.tutorial.model.to.User;
+import com.javastudio.lms.tutorial.web.annotation.ShiroSecured;
 import com.javastudio.lms.tutorial.web.controller.base.ControllerBase;
 import com.javastudio.lms.tutorial.web.security.BCryptPasswordService;
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 
+@ShiroSecured
 @Named
 @ViewScoped
 public class UserController extends ControllerBase<User> implements Serializable {

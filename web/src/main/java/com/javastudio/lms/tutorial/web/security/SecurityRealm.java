@@ -5,6 +5,7 @@ import com.javastudio.lms.tutorial.model.to.User;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.Permission;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
@@ -12,6 +13,7 @@ import org.slf4j.Logger;
 
 import javax.ejb.EJB;
 import javax.inject.Inject;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
