@@ -1,14 +1,12 @@
 package com.javastudio.lms.tutorial.web.controller.base;
 
 import com.javastudio.lms.tutorial.api.GeneralServiceApi;
-import com.javastudio.lms.tutorial.model.base.EntityBase;
+import com.javastudio.lms.tutorial.dto.DataTransferObject;
 import com.javastudio.lms.tutorial.web.annotation.ShiroSecured;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 
 import javax.annotation.PostConstruct;
-import javax.decorator.Decorator;
-import javax.decorator.Delegate;
 import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
@@ -19,7 +17,7 @@ import java.util.Locale;
 
 @ShiroSecured
 @Dependent
-public abstract class ControllerBase<T extends EntityBase> implements Internationalization {
+public abstract class ControllerBase<T extends DataTransferObject> implements Internationalization {
 
     @Inject
     Logger logger;

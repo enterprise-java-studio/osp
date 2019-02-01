@@ -1,6 +1,8 @@
 package com.javastudio.lms.tutorial.web.controller.auth;
 
 import com.javastudio.lms.tutorial.api.UserService;
+import com.javastudio.lms.tutorial.dao.UserDao;
+import com.javastudio.lms.tutorial.dto.UserDTO;
 import com.javastudio.lms.tutorial.model.to.User;
 import com.javastudio.lms.tutorial.web.security.BCryptPasswordService;
 import org.apache.shiro.SecurityUtils;
@@ -90,7 +92,7 @@ public class LoginController implements Serializable {
     }
 
     public void signup() {
-        User user = new User();
+        UserDTO user = new UserDTO();
         user.setUsername(username);
         user.setPassword(passwordService.encryptPassword(password));
         user.setEnabled(Boolean.TRUE);

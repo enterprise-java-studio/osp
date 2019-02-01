@@ -2,7 +2,7 @@ package com.javastudio.lms.tutorial.web.controller.user;
 
 import com.javastudio.lms.tutorial.api.GeneralServiceApi;
 import com.javastudio.lms.tutorial.api.UserService;
-import com.javastudio.lms.tutorial.model.to.User;
+import com.javastudio.lms.tutorial.dto.UserDTO;
 import com.javastudio.lms.tutorial.web.controller.base.ManagerBase;
 
 import javax.ejb.EJB;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @ViewScoped
 @Named
-public class UserManager extends ManagerBase<User> implements Serializable {
+public class UserManager extends ManagerBase<UserDTO> implements Serializable {
 
     private static final long serialVersionUID = -9051371651827827993L;
 
@@ -21,7 +21,7 @@ public class UserManager extends ManagerBase<User> implements Serializable {
     UserService service;
 
     public UserManager() {
-        super(User.class);
+        super(UserDTO.class);
     }
 
     @Override
@@ -30,11 +30,11 @@ public class UserManager extends ManagerBase<User> implements Serializable {
     }
 
     @Override
-    public GeneralServiceApi<User> getGeneralServiceApi() {
+    public GeneralServiceApi<UserDTO> getGeneralServiceApi() {
         return service;
     }
 
-    public List<User> getUsers() {
+    public List<UserDTO> getUsers() {
         return entityList;
     }
 }

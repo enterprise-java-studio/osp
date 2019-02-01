@@ -2,6 +2,7 @@ package com.javastudio.lms.tutorial.web.controller.base;
 
 
 import com.javastudio.lms.tutorial.api.GeneralServiceApi;
+import com.javastudio.lms.tutorial.dto.DataTransferObject;
 import com.javastudio.lms.tutorial.model.base.EntityBase;
 import org.slf4j.Logger;
 
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Locale;
 
 @Dependent
-public abstract class ManagerBase<T extends EntityBase> implements Internationalization {
+public abstract class ManagerBase<T extends DataTransferObject> implements Internationalization {
 
     @Inject
     Logger logger;

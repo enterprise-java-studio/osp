@@ -2,7 +2,7 @@ package com.javastudio.lms.tutorial.web.controller.user;
 
 import com.javastudio.lms.tutorial.api.GeneralServiceApi;
 import com.javastudio.lms.tutorial.api.UserService;
-import com.javastudio.lms.tutorial.model.to.User;
+import com.javastudio.lms.tutorial.dto.UserDTO;
 import com.javastudio.lms.tutorial.web.annotation.ShiroSecured;
 import com.javastudio.lms.tutorial.web.controller.base.ControllerBase;
 import com.javastudio.lms.tutorial.web.security.BCryptPasswordService;
@@ -17,7 +17,7 @@ import java.io.Serializable;
 @ShiroSecured
 @Named
 @ViewScoped
-public class UserController extends ControllerBase<User> implements Serializable {
+public class UserController extends ControllerBase<UserDTO> implements Serializable {
 
     private static final long serialVersionUID = -4360806817248079581L;
 
@@ -33,11 +33,11 @@ public class UserController extends ControllerBase<User> implements Serializable
     private String password;
 
     public UserController() {
-        super(User.class);
+        super(UserDTO.class);
     }
 
     @Override
-    public GeneralServiceApi<User> getGeneralServiceApi() {
+    public GeneralServiceApi<UserDTO> getGeneralServiceApi() {
         return service;
     }
 
@@ -54,11 +54,11 @@ public class UserController extends ControllerBase<User> implements Serializable
 
     }
 
-    public User getUser() {
+    public UserDTO getUser() {
         return super.entity;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserDTO user) {
         super.entity = user;
     }
 

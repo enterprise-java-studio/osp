@@ -56,10 +56,10 @@
                 <version>1.0.2.Final</version>
 
                 <!--<configuration>-->
-                    <!--<hostname>10.10.10.2</hostname>-->
-                    <!--<port>9990</port>-->
-                    <!--<username>hmohammadi</username>-->
-                    <!--<password>148941</password>-->
+                <!--<hostname>10.10.10.2</hostname>-->
+                <!--<port>9990</port>-->
+                <!--<username>hmohammadi</username>-->
+                <!--<password>148941</password>-->
                 <!--</configuration>-->
 
                 <executions>
@@ -173,10 +173,16 @@
         </dependency>
 
         <dependency>
+            <groupId>net.sf.dozer</groupId>
+            <artifactId>dozer</artifactId>
+            <version>5.4.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.3.2</version>
         </dependency>
-
+        
     </dependencies>
 </project>

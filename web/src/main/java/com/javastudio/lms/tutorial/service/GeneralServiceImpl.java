@@ -2,42 +2,62 @@ package com.javastudio.lms.tutorial.service;
 
 import com.javastudio.lms.tutorial.api.GeneralServiceApi;
 import com.javastudio.lms.tutorial.dao.GenericDao;
+import com.javastudio.lms.tutorial.dto.DataTransferObject;
 import com.javastudio.lms.tutorial.model.base.EntityBase;
+import org.dozer.DozerBeanMapperSingletonWrapper;
+import org.dozer.Mapper;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by h.mohammadi on 9/16/2017.
  */
-public abstract class GeneralServiceImpl<T extends EntityBase> implements GeneralServiceApi<T> {
+public abstract class GeneralServiceImpl<T extends EntityBase, V extends DataTransferObject> implements GeneralServiceApi<V> {
 
-    public GeneralServiceImpl() {
+    private final Class<T> entityType;
+    private final Class<V> dtoType;
+
+    public GeneralServiceImpl(Class<T> entityType, Class<V> dtoType) {
+        this.entityType = entityType;
+        this.dtoType = dtoType;
     }
 
     public abstract GenericDao<T> getGenericDao();
 
-    @Override
-    public T create(T entity) {
-        return getGenericDao().create(entity);
+    protected T to(V dto) {
+        Mapper mapper = DozerBeanMapperSingletonWrapper.getInstance();
+        return mapper.map(dto, entityType);
+    }
+
+    protected V dto(T entity) {
+        Mapper mapper = DozerBeanMapperSingletonWrapper.getInstance();
+        return mapper.map(entity, dtoType);
     }
 
     @Override
-    public List<T> findAll() {
-        return getGenericDao().findAll();
+    public V create(V entity) {
+        return dto(getGenericDao().create(to(entity)));
     }
 
     @Override
-    public T find(Long id) {
-        return getGenericDao().findById(id);
+    public List<V> findAll() {
+        List<T> list = getGenericDao().findAll();
+        return list.stream().map(this::dto).collect(Collectors.toList());
     }
 
     @Override
-    public void update(T t) {
-        getGenericDao().update(t);
+    public V find(Long id) {
+        return dto(getGenericDao().findById(id));
     }
 
     @Override
-    public void delete(T t) {
-        getGenericDao().remove(t);
+    public void update(V dto) {
+        getGenericDao().update(to(dto));
+    }
+
+    @Override
+    public void delete(V dto) {
+        getGenericDao().remove(to(dto));
     }
 }
