@@ -47,19 +47,11 @@
     </build>
 
     <dependencies>
-
         <dependency>
             <groupId>com.javastudio.tutorial.security</groupId>
             <artifactId>open-security-api</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>provided</scope>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.25</version>
         </dependency>
 
         <dependency>
@@ -79,8 +71,6 @@
             <artifactId>jBCrypt</artifactId>
             <version>0.4</version>
         </dependency>
-
-
 
         <dependency>
             <groupId>org.apache.shiro</groupId>
@@ -106,8 +96,5 @@
             <artifactId>shiro-web</artifactId>
             <version>${shiro.version}</version>
         </dependency>
-
-
-        
     </dependencies>
 </project>

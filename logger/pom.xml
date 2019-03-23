@@ -11,21 +11,20 @@
         <relativePath>../parent</relativePath>
     </parent>
 
-    <artifactId>${utility.artifactId}</artifactId>
-    <version>${utility.version}</version>
+    <artifactId>${logger.artifactId}</artifactId>
+    <version>${logger.version}</version>
 
     <packaging>jar</packaging>
 
     <build>
-        <finalName>${utility.archive.name}</finalName>
+        <finalName>${logger.archive.name}</finalName>
     </build>
 
     <dependencies>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>${logger.artifactId}</artifactId>
-            <version>${logger.version}</version>
-            <scope>provided</scope>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
         </dependency>
     </dependencies>
 </project>

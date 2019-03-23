@@ -113,6 +113,12 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
+            <artifactId>${logger.artifactId}</artifactId>
+            <version>${logger.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
             <artifactId>${api.artifactId}</artifactId>
             <version>${api.version}</version>
         </dependency>

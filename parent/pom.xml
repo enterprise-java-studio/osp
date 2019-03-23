@@ -11,6 +11,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>../logger</module>
         <module>../utility</module>
 
         <module>../api</module>
@@ -31,18 +32,21 @@
         <api.artifactId>open-security-api</api.artifactId>
         <service.artifactId>open-security-service</service.artifactId>
         <web.artifactId>open-security-web</web.artifactId>
+        <logger.artifactId>open-security-logger</logger.artifactId>
         <utility.artifactId>open-security-utility</utility.artifactId>
 
         <model.version>1.0-SNAPSHOT</model.version>
         <api.version>1.0-SNAPSHOT</api.version>
         <service.version>1.0-SNAPSHOT</service.version>
         <web.version>1.0.0-SNAPSHOT</web.version>
+        <logger.version>1.0-SNAPSHOT</logger.version>
         <utility.version>1.0-SNAPSHOT</utility.version>
 
         <model.archive.name>open-security-model</model.archive.name>
         <api.archive.name>open-security-api</api.archive.name>
         <service.archive.name>open-security-service</service.archive.name>
         <web.archive.name>open-security-web</web.archive.name>
+        <logger.archive.name>open-security-logger</logger.archive.name>
         <utility.archive.name>open-security-utility</utility.archive.name>
 
         <web.contextRoot>open-security</web.contextRoot>

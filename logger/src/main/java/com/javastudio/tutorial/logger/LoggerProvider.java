@@ -1,4 +1,5 @@
-package com.javastudio.lms.tutorial.logger;
+package com.javastudio.tutorial.logger;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

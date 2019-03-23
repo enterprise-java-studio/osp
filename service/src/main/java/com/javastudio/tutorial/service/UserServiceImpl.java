@@ -13,7 +13,7 @@ import javax.ejb.Local;
 import javax.ejb.Stateless;
 
 @Stateless
-@Local({UserService.class})
+@Local(UserService.class)
 public class UserServiceImpl extends GeneralServiceImpl<User, UserDTO> implements UserService {
 
     @EJB
