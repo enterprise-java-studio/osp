@@ -1,11 +1,11 @@
 package com.javastudio.lms.tutorial.web.controller.user;
 
-import com.javastudio.lms.tutorial.api.GeneralServiceApi;
-import com.javastudio.lms.tutorial.api.UserService;
-import com.javastudio.lms.tutorial.dto.UserDTO;
 import com.javastudio.lms.tutorial.web.annotation.ShiroSecured;
 import com.javastudio.lms.tutorial.web.controller.base.ControllerBase;
 import com.javastudio.lms.tutorial.web.security.BCryptPasswordService;
+import com.javastudio.tutorial.api.GeneralServiceApi;
+import com.javastudio.tutorial.api.UserService;
+import com.javastudio.tutorial.dto.UserDTO;
 import org.slf4j.Logger;
 
 import javax.ejb.EJB;

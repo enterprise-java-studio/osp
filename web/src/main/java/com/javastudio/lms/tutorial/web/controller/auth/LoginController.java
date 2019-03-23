@@ -1,10 +1,8 @@
 package com.javastudio.lms.tutorial.web.controller.auth;
 
-import com.javastudio.lms.tutorial.api.UserService;
-import com.javastudio.lms.tutorial.dao.UserDao;
-import com.javastudio.lms.tutorial.dto.UserDTO;
-import com.javastudio.lms.tutorial.model.to.User;
 import com.javastudio.lms.tutorial.web.security.BCryptPasswordService;
+import com.javastudio.tutorial.api.UserService;
+import com.javastudio.tutorial.dto.UserDTO;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;

@@ -1,9 +1,9 @@
 package com.javastudio.lms.tutorial.web.controller.user;
 
-import com.javastudio.lms.tutorial.api.GeneralServiceApi;
-import com.javastudio.lms.tutorial.api.UserService;
-import com.javastudio.lms.tutorial.dto.UserDTO;
 import com.javastudio.lms.tutorial.web.controller.base.ManagerBase;
+import com.javastudio.tutorial.api.GeneralServiceApi;
+import com.javastudio.tutorial.api.UserService;
+import com.javastudio.tutorial.dto.UserDTO;
 
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;

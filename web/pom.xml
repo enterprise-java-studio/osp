@@ -8,6 +8,7 @@
         <groupId>com.javastudio.tutorial.security</groupId>
         <artifactId>open-security-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../parent</relativePath>
     </parent>
 
     <artifactId>open-security-web</artifactId>
@@ -27,24 +28,9 @@
     </properties>
 
     <build>
-        <finalName>open-security-web</finalName>
+        <finalName>${web.archive.name}</finalName>
 
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.2</version>
-                <configuration>
-                    <verbose>true</verbose>
-                    <generatedTestSourcesDirectory>true</generatedTestSourcesDirectory>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <compilerArguments>
-                        <endorseddirs>${project.build.directory}/endorsed</endorseddirs>
-                    </compilerArguments>
-                </configuration>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -57,45 +43,17 @@
                     <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
                 </configuration>
             </plugin>
-
-            <plugin>
-                <groupId>org.wildfly.plugins</groupId>
-                <artifactId>wildfly-maven-plugin</artifactId>
-                <version>1.0.2.Final</version>
-
-                <!--<configuration>-->
-                <!--<hostname>10.10.10.2</hostname>-->
-                <!--<port>9990</port>-->
-                <!--<username>hmohammadi</username>-->
-                <!--<password>148941</password>-->
-                <!--</configuration>-->
-
-                <executions>
-                    <execution>
-                        <id>undeploy</id>
-                        <phase>clean</phase>
-                        <goals>
-                            <goal>undeploy</goal>
-                        </goals>
-                        <configuration>
-                            <ignoreMissingDeployment>true</ignoreMissingDeployment>
-                        </configuration>
-                    </execution>
-
-                    <execution>
-                        <id>deploy</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>deploy</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
     <dependencies>
 
+        <dependency>
+            <groupId>com.javastudio.tutorial.security</groupId>
+            <artifactId>open-security-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
 
 
         <dependency>
@@ -147,12 +105,6 @@
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-web</artifactId>
             <version>${shiro.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>net.sf.dozer</groupId>
-            <artifactId>dozer</artifactId>
-            <version>5.4.0</version>
         </dependency>
 
 

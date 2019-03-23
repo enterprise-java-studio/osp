@@ -1,4 +1,4 @@
-package com.javastudio.lms.tutorial.dao;
+package com.javastudio.tutorial.dao;
 
 import com.javastudio.tutorial.dao.GenericDao;
 import com.javastudio.tutorial.dao.QueryParameterUtil;

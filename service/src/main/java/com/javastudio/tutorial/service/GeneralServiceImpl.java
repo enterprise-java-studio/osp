@@ -1,18 +1,16 @@
-package com.javastudio.lms.tutorial.service;
+package com.javastudio.tutorial.service;
 
-import com.javastudio.lms.tutorial.api.GeneralServiceApi;
-import com.javastudio.lms.tutorial.dao.GenericDao;
-import com.javastudio.lms.tutorial.dto.DataTransferObject;
-import com.javastudio.lms.tutorial.model.base.EntityBase;
+import com.javastudio.tutorial.api.GeneralServiceApi;
+import com.javastudio.tutorial.dao.GenericDao;
+import com.javastudio.tutorial.dto.DataTransferObject;
+import com.javastudio.tutorial.model.base.EntityBase;
 import org.dozer.DozerBeanMapperSingletonWrapper;
 import org.dozer.Mapper;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Created by h.mohammadi on 9/16/2017.
- */
+
 public abstract class GeneralServiceImpl<T extends EntityBase, V extends DataTransferObject> implements GeneralServiceApi<V> {
 
     private final Class<T> entityType;

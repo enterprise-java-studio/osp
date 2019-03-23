@@ -1,7 +1,6 @@
-package com.javastudio.lms.tutorial.api;
+package com.javastudio.tutorial.api;
 
-import com.javastudio.lms.tutorial.dto.DataTransferObject;
-import com.javastudio.lms.tutorial.model.base.EntityBase;
+import com.javastudio.tutorial.dto.DataTransferObject;
 
 import java.util.List;
 

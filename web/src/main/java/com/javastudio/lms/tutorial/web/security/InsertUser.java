@@ -1,8 +1,7 @@
 package com.javastudio.lms.tutorial.web.security;
 
-import com.javastudio.lms.tutorial.api.UserService;
-import com.javastudio.lms.tutorial.dto.UserDTO;
-import com.javastudio.lms.tutorial.model.to.User;
+import com.javastudio.tutorial.api.UserService;
+import com.javastudio.tutorial.dto.UserDTO;
 import org.slf4j.Logger;
 
 import javax.annotation.PostConstruct;
@@ -30,7 +29,7 @@ public class InsertUser {
     @PostConstruct
     public void insert() {
         try {
-            User user = userService.findByUsername("admin");
+            UserDTO user = userService.findByUsername("admin");
             if (user != null)
                 return;
 

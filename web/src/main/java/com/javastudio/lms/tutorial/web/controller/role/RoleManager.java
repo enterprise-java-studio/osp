@@ -1,7 +1,6 @@
 package com.javastudio.lms.tutorial.web.controller.role;
 
-
-import com.javastudio.lms.tutorial.api.RoleService;
+import com.javastudio.tutorial.api.RoleService;
 
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;

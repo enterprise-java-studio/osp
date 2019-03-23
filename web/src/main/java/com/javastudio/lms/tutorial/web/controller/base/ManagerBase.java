@@ -1,9 +1,8 @@
 package com.javastudio.lms.tutorial.web.controller.base;
 
 
-import com.javastudio.lms.tutorial.api.GeneralServiceApi;
-import com.javastudio.lms.tutorial.dto.DataTransferObject;
-import com.javastudio.lms.tutorial.model.base.EntityBase;
+import com.javastudio.tutorial.api.GeneralServiceApi;
+import com.javastudio.tutorial.dto.DataTransferObject;
 import org.slf4j.Logger;
 
 import javax.annotation.PostConstruct;

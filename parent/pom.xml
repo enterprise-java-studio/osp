@@ -11,14 +11,63 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>../model</module>
+        <module>../utility</module>
+
+        <module>../api</module>
+
         <module>../web</module>
+
+        <module>../model</module>
+        <module>../service</module>
+
+        <module>../ear</module>
     </modules>
 
     <properties>
         <javase.version>1.8</javase.version>
         <javaee.version>8.0</javaee.version>
+
+        <model.artifactId>open-security-model</model.artifactId>
+        <api.artifactId>open-security-api</api.artifactId>
+        <service.artifactId>open-security-service</service.artifactId>
+        <web.artifactId>open-security-web</web.artifactId>
+        <utility.artifactId>open-security-utility</utility.artifactId>
+
+        <model.version>1.0-SNAPSHOT</model.version>
+        <api.version>1.0-SNAPSHOT</api.version>
+        <service.version>1.0-SNAPSHOT</service.version>
+        <web.version>1.0.0-SNAPSHOT</web.version>
+        <utility.version>1.0-SNAPSHOT</utility.version>
+
+        <model.archive.name>open-security-model</model.archive.name>
+        <api.archive.name>open-security-api</api.archive.name>
+        <service.archive.name>open-security-service</service.archive.name>
+        <web.archive.name>open-security-web</web.archive.name>
+        <utility.archive.name>open-security-utility</utility.archive.name>
+
+        <web.contextRoot>open-security</web.contextRoot>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <verbose>true</verbose>
+                    <generatedTestSourcesDirectory>true</generatedTestSourcesDirectory>
+                    <source>${javase.version}</source>
+                    <target>${javase.version}</target>
+                    <compilerArguments>
+                        <endorseddirs>${project.build.directory}/endorsed</endorseddirs>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>

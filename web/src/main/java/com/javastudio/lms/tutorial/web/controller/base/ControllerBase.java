@@ -1,8 +1,8 @@
 package com.javastudio.lms.tutorial.web.controller.base;
 
-import com.javastudio.lms.tutorial.api.GeneralServiceApi;
-import com.javastudio.lms.tutorial.dto.DataTransferObject;
 import com.javastudio.lms.tutorial.web.annotation.ShiroSecured;
+import com.javastudio.tutorial.api.GeneralServiceApi;
+import com.javastudio.tutorial.dto.DataTransferObject;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 

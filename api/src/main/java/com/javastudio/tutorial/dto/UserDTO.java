@@ -1,4 +1,4 @@
-package com.javastudio.lms.tutorial.dto;
+package com.javastudio.tutorial.dto;
 
 import java.util.Set;
 
