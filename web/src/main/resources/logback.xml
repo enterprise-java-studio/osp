@@ -51,7 +51,7 @@
     </appender>
 
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>${LOG_PATH}/backend-main-2.log</file>
+        <file>${LOG_PATH}/open-security.log</file>
         <encoder>
             <pattern>%date %level [%thread] %logger{10} %msg%n</pattern>
         </encoder>

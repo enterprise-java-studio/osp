@@ -96,5 +96,12 @@
             <artifactId>shiro-web</artifactId>
             <version>${shiro.version}</version>
         </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>${project.groupId}</groupId>-->
+            <!--<artifactId>${logger.artifactId}</artifactId>-->
+            <!--<version>${logger.version}</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
     </dependencies>
 </project>

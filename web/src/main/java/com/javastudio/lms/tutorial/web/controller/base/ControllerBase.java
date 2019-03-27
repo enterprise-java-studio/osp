@@ -80,6 +80,7 @@ public abstract class ControllerBase<T extends DataTransferObject> implements In
             getGeneralServiceApi().create(entity);
             context.addMessage(null, new FacesMessage(resource.getMessage("request.success")));
             externalContext.getFlash().setKeepMessages(true);
+            logger.info("entity saved successfully.");
             return afterCreate();
         } catch (Exception e) {
             String message = String.format("Could not save %s in database.", entity.getClass());

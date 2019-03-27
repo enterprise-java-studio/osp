@@ -13,8 +13,8 @@ import java.util.List;
 @Stateless
 public class RoleDao extends GenericDao<Role> {
 
-    @Inject
-    private Logger logger;
+//    @Inject
+//    private Logger logger;
 
     public RoleDao() {
         super(Role.class);

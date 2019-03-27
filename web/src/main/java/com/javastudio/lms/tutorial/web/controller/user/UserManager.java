@@ -31,7 +31,7 @@ public class UserManager extends ManagerBase<UserDTO> implements Serializable {
 
     @Override
     protected void onLoad() {
-
+        logger.info("");
     }
 
     @Override
