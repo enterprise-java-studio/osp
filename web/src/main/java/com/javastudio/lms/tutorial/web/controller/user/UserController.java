@@ -7,6 +7,7 @@ import com.javastudio.tutorial.api.GeneralServiceApi;
 import com.javastudio.tutorial.api.UserService;
 import com.javastudio.tutorial.dto.UserDTO;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
@@ -21,8 +22,8 @@ public class UserController extends ControllerBase<UserDTO> implements Serializa
 
     private static final long serialVersionUID = -4360806817248079581L;
 
-    @Inject
-    Logger logger;
+    // @Inject
+    Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Inject
     BCryptPasswordService passwordService;

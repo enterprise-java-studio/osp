@@ -4,6 +4,12 @@
                             xsi:schemaLocation="urn:jboss:deployment-structure:1.2 http://www.jboss.org/schema/jbossas/jboss-deployment-structure-1_2.xsd">
     <deployment>
         <exclusions>
+            <module name='org.apache.commons.logging'/>
+            <module name='org.apache.log4j'/>
+            <module name='org.jboss.logging'/>
+            <module name='org.jboss.logging.jul-to-slf4j-stub'/>
+            <module name='org.jboss.logmanager'/>
+            <module name='org.jboss.logmanager.log4j'/>
             <module name='org.slf4j'/>
             <module name='org.slf4j.impl'/>
         </exclusions>
@@ -11,6 +17,12 @@
 
     <sub-deployment name="open-security-model.jar">
         <exclusions>
+            <module name='org.apache.commons.logging'/>
+            <module name='org.apache.log4j'/>
+            <module name='org.jboss.logging'/>
+            <module name='org.jboss.logging.jul-to-slf4j-stub'/>
+            <module name='org.jboss.logmanager'/>
+            <module name='org.jboss.logmanager.log4j'/>
             <module name='org.slf4j'/>
             <module name='org.slf4j.impl'/>
         </exclusions>
@@ -18,6 +30,12 @@
 
     <sub-deployment name="open-security-api.jar">
         <exclusions>
+            <module name='org.apache.commons.logging'/>
+            <module name='org.apache.log4j'/>
+            <module name='org.jboss.logging'/>
+            <module name='org.jboss.logging.jul-to-slf4j-stub'/>
+            <module name='org.jboss.logmanager'/>
+            <module name='org.jboss.logmanager.log4j'/>
             <module name='org.slf4j'/>
             <module name='org.slf4j.impl'/>
         </exclusions>
@@ -25,6 +43,12 @@
 
     <sub-deployment name="open-security-service.jar">
         <exclusions>
+            <module name='org.apache.commons.logging'/>
+            <module name='org.apache.log4j'/>
+            <module name='org.jboss.logging'/>
+            <module name='org.jboss.logging.jul-to-slf4j-stub'/>
+            <module name='org.jboss.logmanager'/>
+            <module name='org.jboss.logmanager.log4j'/>
             <module name='org.slf4j'/>
             <module name='org.slf4j.impl'/>
         </exclusions>
@@ -32,6 +56,12 @@
 
     <sub-deployment name="open-security-web.war">
         <exclusions>
+            <module name='org.apache.commons.logging'/>
+            <module name='org.apache.log4j'/>
+            <module name='org.jboss.logging'/>
+            <module name='org.jboss.logging.jul-to-slf4j-stub'/>
+            <module name='org.jboss.logmanager'/>
+            <module name='org.jboss.logmanager.log4j'/>
             <module name='org.slf4j'/>
             <module name='org.slf4j.impl'/>
         </exclusions>

@@ -1,18 +1,18 @@
 package com.javastudio.lms.tutorial.web.listener;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
-import javax.inject.Inject;
 
 public class DebugListener implements PhaseListener {
 
     private static final long serialVersionUID = 1069270717751614672L;
 
-    @Inject
-    Logger logger;
+    // @Inject
+    Logger logger = LoggerFactory.getLogger(DebugListener.class);
 
     @Override
     public void beforePhase(PhaseEvent event) {

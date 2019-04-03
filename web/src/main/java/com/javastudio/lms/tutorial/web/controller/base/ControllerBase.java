@@ -5,6 +5,7 @@ import com.javastudio.tutorial.api.GeneralServiceApi;
 import com.javastudio.tutorial.dto.DataTransferObject;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.Dependent;
@@ -19,8 +20,8 @@ import java.util.Locale;
 @Dependent
 public abstract class ControllerBase<T extends DataTransferObject> implements Internationalization {
 
-    @Inject
-    Logger logger;
+    // @Inject
+    Logger logger = LoggerFactory.getLogger(ControllerBase.class);
 
     private final LocalizedResource resource;
 
