@@ -49,6 +49,8 @@
         <web.contextRoot>open-security</web.contextRoot>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
     </properties>
 
     <build>

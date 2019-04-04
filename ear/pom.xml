@@ -16,6 +16,13 @@
 
     <packaging>ear</packaging>
 
+    <url>http://javastudio.com/tutorial</url>
+
+    <properties>
+        <!-- Work directory of ear plugin -->
+        <ear.work.directory>${project.build.directory}/${project.build.finalName}</ear.work.directory>
+    </properties>
+
     <build>
         <finalName>open-security-ear</finalName>
 
@@ -32,9 +39,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <!-- Work Directory of Ear plugin -->
-                            <outputDirectory>${project.build.directory}/${project.build.finalName}/logback
-                            </outputDirectory>
+                            <outputDirectory>${ear.work.directory}/logback</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>src/main/resources</directory>
