@@ -17,8 +17,8 @@ import java.util.Set;
 @Dependent
 public abstract class GenericDao<T extends EntityBase> {
 
-    //    @Inject
-    Logger logger = LoggerFactory.getLogger(GenericDao.class);
+    @Inject
+    private Logger logger;
 
     protected EntityManager getEntityManager() {
         return entityManager;

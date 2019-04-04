@@ -73,6 +73,7 @@
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
             <version>${shiro.version}</version>
+            <!-- Exclude slf4j-api, it will provided in ear shared libraries -->
             <exclusions>
                 <exclusion>
                     <groupId>org.slf4j</groupId>
@@ -86,6 +87,13 @@
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-ehcache</artifactId>
             <version>${shiro.version}</version>
+            <!-- Exclude slf4j-api, it will provided in ear shared libraries -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -93,12 +101,5 @@
             <artifactId>shiro-web</artifactId>
             <version>${shiro.version}</version>
         </dependency>
-
-        <!--<dependency>-->
-            <!--<groupId>${project.groupId}</groupId>-->
-            <!--<artifactId>${logger.artifactId}</artifactId>-->
-            <!--<version>${logger.version}</version>-->
-            <!--<scope>provided</scope>-->
-        <!--</dependency>-->
     </dependencies>
 </project>

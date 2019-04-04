@@ -5,10 +5,10 @@ import com.javastudio.tutorial.api.GeneralServiceApi;
 import com.javastudio.tutorial.api.UserService;
 import com.javastudio.tutorial.dto.UserDTO;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
@@ -19,7 +19,8 @@ public class UserManager extends ManagerBase<UserDTO> implements Serializable {
 
     private static final long serialVersionUID = -9051371651827827993L;
 
-    Logger logger = LoggerFactory.getLogger(UserManager.class);
+    @Inject
+    private Logger logger;
 
     @EJB
     UserService service;

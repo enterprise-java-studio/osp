@@ -22,8 +22,8 @@ public class UserController extends ControllerBase<UserDTO> implements Serializa
 
     private static final long serialVersionUID = -4360806817248079581L;
 
-    // @Inject
-    Logger logger = LoggerFactory.getLogger(UserController.class);
+     @Inject
+   private Logger logger;
 
     @Inject
     BCryptPasswordService passwordService;

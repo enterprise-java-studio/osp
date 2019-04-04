@@ -3,14 +3,12 @@ package com.javastudio.lms.tutorial.web.security;
 import com.javastudio.tutorial.api.UserService;
 import com.javastudio.tutorial.dto.UserDTO;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.inject.Inject;
-import java.io.InputStream;
 
 /**
  * Created by nebrass on 25/12/2015.
@@ -25,8 +23,8 @@ public class InsertUser {
     @Inject
     BCryptPasswordService passwordService;
 
-    // @Inject
-    private Logger logger = LoggerFactory.getLogger(InsertUser.class);
+    @Inject
+    private Logger logger;
 
     @PostConstruct
     public void insert() {

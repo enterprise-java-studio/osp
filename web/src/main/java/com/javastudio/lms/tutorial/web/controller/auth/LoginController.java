@@ -9,6 +9,7 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.util.SavedRequest;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -29,7 +30,7 @@ public class LoginController implements Serializable {
     private static final long serialVersionUID = -6955237149837835795L;
 
     @Inject
-    Logger logger;
+    private Logger logger;
 
     @Inject
     BCryptPasswordService passwordService;

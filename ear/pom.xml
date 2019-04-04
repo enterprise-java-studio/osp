@@ -33,7 +33,8 @@
                         </goals>
                         <configuration>
                             <!-- Work Directory of Ear plugin -->
-                            <outputDirectory>${project.build.directory}/${project.build.finalName}/logback</outputDirectory>
+                            <outputDirectory>${project.build.directory}/${project.build.finalName}/logback
+                            </outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>src/main/resources</directory>
@@ -136,12 +137,6 @@
             <version>${utility.version}</version>
         </dependency>
 
-        <!--<dependency>-->
-        <!--<groupId>${project.groupId}</groupId>-->
-        <!--<artifactId>${logger.artifactId}</artifactId>-->
-        <!--<version>${logger.version}</version>-->
-        <!--</dependency>-->
-
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${api.artifactId}</artifactId>
@@ -163,21 +158,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>${logback.version}</version>
+            <groupId>com.javastudio.tutorial.logger</groupId>
+            <artifactId>open-security-logger</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

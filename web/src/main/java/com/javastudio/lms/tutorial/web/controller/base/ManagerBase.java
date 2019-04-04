@@ -18,7 +18,7 @@ import java.util.Locale;
 public abstract class ManagerBase<T extends DataTransferObject> implements Internationalization {
 
     @Inject
-    Logger logger;
+    private Logger logger;
 
     private final LocalizedResource resource;
 

@@ -17,7 +17,7 @@ import javax.inject.Inject;
 public class ShiroConfiguration {
 
     @Inject
-    Logger logger;
+    private Logger logger;
 
     @Inject
     SecurityRealm securityRealm;
