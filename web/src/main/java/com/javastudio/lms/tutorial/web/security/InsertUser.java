@@ -30,9 +30,12 @@ public class InsertUser {
     public void insert() {
         try {
             UserDTO user = userService.findByUsername("admin");
-            if (user != null)
+            if (user != null) {
+                logger.info("User admin already exists.");
                 return;
+            }
 
+            logger.info("Prepare to add user admin.");
             UserDTO admin = new UserDTO();
             admin.setUsername("admin");
             admin.setPassword(passwordService.encryptPassword("admin"));

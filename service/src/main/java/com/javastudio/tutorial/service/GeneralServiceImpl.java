@@ -6,12 +6,17 @@ import com.javastudio.tutorial.dto.DataTransferObject;
 import com.javastudio.tutorial.model.base.EntityBase;
 import org.dozer.DozerBeanMapperSingletonWrapper;
 import org.dozer.Mapper;
+import org.slf4j.Logger;
 
+import javax.inject.Inject;
 import java.util.List;
 import java.util.stream.Collectors;
 
 
 public abstract class GeneralServiceImpl<T extends EntityBase, V extends DataTransferObject> implements GeneralServiceApi<V> {
+
+    @Inject
+    private Logger logger;
 
     private final Class<T> entityType;
     private final Class<V> dtoType;
@@ -35,6 +40,7 @@ public abstract class GeneralServiceImpl<T extends EntityBase, V extends DataTra
 
     @Override
     public V create(V entity) {
+        logger.info("Try to add entity ...");
         return dto(getGenericDao().create(to(entity)));
     }
 

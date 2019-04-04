@@ -36,11 +36,6 @@
 <!--</logger>-->
 
 
-<!--<root level="INFO">-->
-<!--<appender-ref ref="STDOUT"/>-->
-<!--</root>-->
-
-
 <configuration scan="true" scanPeriod="10 seconds">
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
@@ -68,6 +63,10 @@
     <logger name="org.apache.cxf" level="warn"/>
 
     <logger name="com.javastudio.lms.tutorial" level="INFO" additivity="true">
+        <appender-ref ref="FILE"/>
+    </logger>
+
+    <logger name="com.javastudio.tutorial" level="INFO" additivity="true">
         <appender-ref ref="FILE"/>
     </logger>
 

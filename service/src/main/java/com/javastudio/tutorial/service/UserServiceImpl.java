@@ -7,14 +7,19 @@ import com.javastudio.tutorial.dto.UserDTO;
 import com.javastudio.tutorial.model.to.User;
 import org.dozer.DozerBeanMapperSingletonWrapper;
 import org.dozer.Mapper;
+import org.slf4j.Logger;
 
 import javax.ejb.EJB;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 @Stateless
 @Local(UserService.class)
 public class UserServiceImpl extends GeneralServiceImpl<User, UserDTO> implements UserService {
+
+    @Inject
+    private Logger logger;
 
     @EJB
     UserDao dao;
@@ -29,6 +34,7 @@ public class UserServiceImpl extends GeneralServiceImpl<User, UserDTO> implement
     }
 
     public UserDTO findByUsername(String username) {
+        logger.info("Find user by username ...");
         Mapper mapper = DozerBeanMapperSingletonWrapper.getInstance();
         return mapper.map(dao.findByUsername(username), UserDTO.class);
     }

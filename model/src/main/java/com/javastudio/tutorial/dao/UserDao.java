@@ -15,8 +15,8 @@ import java.util.List;
 @Stateless
 public class UserDao extends GenericDao<User> {
 
-//    @Inject
-//    private Logger logger;
+    @Inject
+    private Logger logger;
 
     public UserDao() {
         super(User.class);
@@ -28,11 +28,12 @@ public class UserDao extends GenericDao<User> {
     }
 
     public User findByUsername(@NotNull String username) {
+        logger.info("Find user by username ...");
         TypedQuery<User> userTypedQuery = createNamedQuery(User.FIND_BY_USERNAME, QueryParameterUtil.with("username", username).parameters());
         try {
             return userTypedQuery.getSingleResult();
         } catch (NoResultException e) {
-            //logger.info("UserService : No valid User was found for [" + username + "] : " + e);
+            logger.info("UserService : No valid User was found for [" + username + "] : " + e);
             return null;
         }
     }
